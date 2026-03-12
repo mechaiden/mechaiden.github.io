@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aiden Goff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:       #f7f5f0;
+      --surface:  #efede6;
+      --ink:      #1a1917;
+      --muted:    #8a8680;
+      --accent:   #3d5a4c;
+      --rule:     #d8d4cc;
+      --serif:    'DM Serif Display', Georgia, serif;
+      --mono:     'DM Mono', 'Courier New', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-weight: 300;
+      font-size: clamp(13px, 1.5vw, 15px);
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 2rem);
+    }
+
+    header {
+      margin-bottom: 4rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 7vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 em { font-style: italic; color: var(--accent); }
+
+    .tagline { color: var(--muted); max-width: 44ch; line-height: 1.6; }
+
+    hr { border: none; border-top: 1px solid var(--rule); margin: 3rem 0; }
+
+    .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    section { animation: fadeUp 0.6s ease both; }
+    section:nth-child(2) { animation-delay: 0.10s; }
+    section:nth-child(3) { animation-delay: 0.18s; }
+    section:nth-child(4) { animation-delay: 0.26s; }
+    section:nth-child(5) { animation-delay: 0.32s; }
+
+    /* About */
+    .about p { max-width: 52ch; margin-bottom: 1rem; }
+    .about p:last-child { margin-bottom: 0; }
+
+    /* Skills */
+    .skill-row {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
+    .skill-row:first-of-type { border-top: 1px solid var(--rule); }
+    .skill-category { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .skill-values { font-size: 0.88rem; }
+
+    /* Projects */
+    .project-list { list-style: none; }
+    .project-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s, padding 0.15s, margin 0.15s;
+    }
+    .project-item:first-child { border-top: 1px solid var(--rule); }
+    .project-item:hover { background: var(--surface); margin: 0 -1rem; padding: 1rem; }
+    .project-name { font-family: var(--serif); font-size: 1.05rem; }
+    .project-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+    .project-tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+
+    /* Experience */
+    .exp-list { display: flex; flex-direction: column; gap: 2rem; }
+    .exp-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.3rem; flex-wrap: wrap; }
+    .exp-title { font-family: var(--serif); font-size: 1.05rem; }
+    .exp-date { font-size: 0.7rem; letter-spacing: 0.08em; color: var(--muted); white-space: nowrap; }
+    .exp-org { font-size: 0.75rem; color: var(--accent); margin-bottom: 0.5rem; letter-spacing: 0.04em; }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.2rem; }
+    .exp-bullets li { font-size: 0.85rem; color: var(--muted); padding-left: 1rem; position: relative; }
+    .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--rule); }
+
+    /* Footer */
+    footer {
+      margin-top: 4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      animation: fadeUp 0.6s 0.38s ease both;
+    }
+
+    .link {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .link:hover { color: var(--accent); border-color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .skill-row { grid-template-columns: 1fr; gap: 0.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <header>
+      <p class="eyebrow">CS @ UGA · AI Emphasis</p>
+      <h1>Aiden <em>Goff</em></h1>
+      <p class="tagline">Computer science student building at the intersection of software, satellites, and systems. Expected graduation May 2028.</p>
+    </header>
+
+    <hr />
+
+    <section class="about">
+      <p class="label">About</p>
+      <p>I'm a CS student at the University of Georgia's School of Computing, focused on artificial intelligence. I work on real hardware at the UGA Small Satellite Research Laboratory, helping build satellites and develop communications systems using GNURadio and SDR.</p>
+    </section>
+
+    <hr />
+
+    <section class="skills">
+      <p class="label">Technical Skills</p>
+      <div class="skill-row">
+        <span class="skill-category">Languages</span>
+        <span class="skill-values">Java, C, Ruby, TypeScript, React / Next.js</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-category">Software</span>
+        <span class="skill-values">SQL, MATLAB, Simulink, GNURadio</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-category">Systems</span>
+        <span class="skill-values">Windows, Linux, Unix, macOS</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-category">Other</span>
+        <span class="skill-values">Multi-threaded programming, database management, discrete &amp; IC electronics</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-category">Coursework</span>
+        <span class="skill-values">Software Development, Systems Programming, Data Structures, Theory of Computing, Discrete Mathematics</span>
+      </div>
+    </section>
+
+    <hr />
+
+    <section class="projects">
+      <p class="label">Projects</p>
+      <ul class="project-list">
+        <li>
+          <a class="project-item" href="https://github.com/mechaiden">
+            <div>
+              <div class="project-name">Language Learning App</div>
+              <div class="project-desc">Frontend for a startup language-learning platform. Built with Next.js, connected to a Spring Boot backend via REST APIs.</div>
+            </div>
+            <span class="project-tag">TypeScript</span>
+          </a>
+        </li>
+        <li>
+          <a class="project-item" href="https://github.com/mechaiden">
+            <div>
+              <div class="project-name">COSMO Satellite Comms</div>
+              <div class="project-desc">Streamlined communications flow for the UGA Small Satellite Research Lab using GNURadio and software-defined radio.</div>
+            </div>
+            <span class="project-tag">GNURadio</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <section class="experience">
+      <p class="label">Experience</p>
+      <div class="exp-list">
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-title">COSMO Member</span>
+            <span class="exp-date">Aug 2024 – Present</span>
+          </div>
+          <div class="exp-org">UGA Small Satellite Research Laboratory · Athens, GA</div>
+          <ul class="exp-bullets">
+            <li>Collaborate across teams to design and build satellites</li>
+            <li>Develop communications systems using GNURadio and SDR</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <footer>
+      <a class="link" href="https://github.com/mechaiden">GitHub</a>
+      <a class="link" href="mailto:goffaiden916@gmail.com">Email</a>
+    </footer>
+
+  </main>
+</body>
+</html>
