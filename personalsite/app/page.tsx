@@ -1,3 +1,4 @@
+import ASCIIText from "./components/ASCIIText";
 import CRTWarp from "./components/CRTWarp";
 
 export default function Home() {
@@ -25,6 +26,32 @@ export default function Home() {
           dpr={1}
           fps={24}
         />
+        <div
+          style={{
+            position: "absolute",
+            top: "4%",
+            left: "40%",
+            width: "45%",
+            height: "35%",
+          }}
+        >
+          <ASCIIText
+            text="Welcome"
+            asciiFontSize={8}
+            colors={["#ff6188", "#7C3AED", "#ffd866"]}
+            textScale={1}
+            blocks={0.9}
+            waves={1}
+            waveSpeed={0.25}
+            chroma={1}
+            tilt={1}
+            hueShift={1}
+            scramble={0.6}
+            clickRipple
+            idle
+            interactive
+          />
+        </div>
       </div>
     </div>
   );
